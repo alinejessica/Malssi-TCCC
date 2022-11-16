@@ -1,0 +1,20 @@
+
+
+
+
+
+
+
+
+
+
+
+{% block body%}
+<form name="edit_user" method="post" action="/douplogout">
+    {% csrf_token %}
+    {{perfil.a_p}}
+    <input type="submit" valeu="Atualizar">
+</form>
+{{% endblock%}}
+
+{{% extences 'cadastro.html' %}}

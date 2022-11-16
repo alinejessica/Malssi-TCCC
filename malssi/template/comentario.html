@@ -1,0 +1,15 @@
+<form name="comente" method="post" action="/comentario/"> 
+  {% cs crf_token %}
+  {{form.comenatrio}}
+  <br>
+  <input type="submit" value="Comentar">
+</form>
+<br>------------------------- <br><br>
+<br>---Seus Comentarios--- </br>
+</br>
+Seus Comentarios
+{% if history %}
+  {% for c in history %}
+ </br>{{ c.comentario }} -- {c.usuario.usuario} -- <a href="{% url 'edit_coment' c.id %}"> [EDITAR]</a>
+  {% endfor %}
+{% endif %}

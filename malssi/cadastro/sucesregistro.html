@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'form.css' %}">
+    <title>Registro</title>
+</head>
+<body>
+    <div class="content">
+        <div class="left-content">
+            <form class="form" name="cad_user" method="post" action="/docad/"method="post" action="./">
+                {% csrf_token %}
+                <div class="form-single">
+                    <label class="label">Usuário</label>
+                    {{form.usuario}}
+                </div>
+                <div>
+                    <label class="label">Email</label>
+                    {{form.email}}
+                </div>
+                <div>
+                    <label class="label">Data de nascimento</label>
+                    {{form.nascimento}}
+                </div>
+                <div>
+                    <label class="label">Nº de telefone</label>
+                    {{form.tel}}
+                </div>
+                <div>
+                    <label class="label">Senha</label>
+                    {{form.senha}}
+                </div>
+                <div>
+                    <label class="label">Confirmar senha</label>
+                    {{form.confirma_senha}}
+                </div>
+                <div id="result">
+    
+                </div>
+                <button id="btn" type="submit" class="button" disabled="true">Registrar</button>
+            </form>
+        </div>
+        <img class="img" src="tela6 (1).png">
+    </div>
+    <script>
+        let input1 = document.getElementById("id_confirma_senha");
+        input1.setAttribute("onkeyup", "confereSenha()")
+        let input2 = document.getElementById("id_senha");
+        input2.setAttribute("onkeyup", "confereSenha()")
+
+        function confereSenha() {
+            let senha1 = document.getElementById("id_senha");
+            let senha2 = document.getElementById("id_confirma_senha");
+            let btn = document.getElementById("btn");
+
+            let result = document.getElementById("result");
+
+            if(senha1.value != senha2.value || senha2.value != senha1.value) {
+                result.innerText = "As senhas não conferem"
+                btn.disabled = true
+            } else {
+                result.innerText = ""
+                btn.disabled = false
+            }
+
+            if(senha2.value == "") {
+                result.innerText = ""
+            }
+
+            if(senha1.value == "" || senha2.value == "") {
+                btn.disabled = true
+            }
+        }
+
+        
+        
+        let tel = document.getElementById("id_tel");
+        tel.setAttribute("onkeyup", "regexNumber()")
+        
+        function regexNumber() {
+            let num = [/0-9/];
+
+            console.log(num.test(tel.value))
+        }
+    </script>
+</body>
+</html>

@@ -1,14 +1,32 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <span>OLA,OLA!</span>
-</body>
+     <link> rel=="stylesheet" href="{% static'css/style.css'%)">
+       <title>Pagina Django</title>
+    
+    <title>
+        {% block titulo %}
+        {% endblock %}
+    </title>
+
+    <body>
+         <div class="header">
+         </div>
+          <div name="body-container">
+        <span class="texto">
+        {% block body %}
+        {% endblock %}
+        </span>
+        </div>
+        <footer>
+        <div class="footer">
+        </div>
+        </footer>
+        <div style="position: static importante;"></div>
+    </body>
 </html>
+</head>
